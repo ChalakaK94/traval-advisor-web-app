@@ -1,7 +1,7 @@
-export function PlaceDetails() {
+export function PlaceDetails({place}) {
     return (
         <>
-            <div>Place</div>
+            <h1>{place.name}</h1>
         </>
     )
 }
