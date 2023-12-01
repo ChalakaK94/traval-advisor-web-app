@@ -2,12 +2,11 @@ import useStyle from './styles'
 import {FormControl, Grid, InputLabel, MenuItem, Select, Typography} from "@material-ui/core";
 import {useState} from "react";
 import {PlaceDetails} from "../PlaceDetails/PlaceDetails";
-export function List() {
+export function List({places}) {
     const classes = useStyle();
     const [type,setType] = useState('restaurants');
     const [rating,setRating] = useState('');
 
-    const places = [{name:'place1 '},{name:'place2 '},{name:'place3 '},]
 
     return (
         <div className={classes.container}>
