@@ -11,7 +11,7 @@ function App() {
     const [places, setPlaces] = useState([]);
 
     const [coordinaties, setCoordinaties] = useState({lat:0 ,lng:0})
-    const [bounds, setBounds] = useState(null);
+    const [bounds, setBounds] = useState({});
 
 
     useEffect(() => {
