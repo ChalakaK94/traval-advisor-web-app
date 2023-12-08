@@ -1,13 +1,18 @@
 import useStyle from './styles'
 import {FormControl, Grid, InputLabel, MenuItem, Select, Typography} from "@material-ui/core";
-import {useState} from "react";
+import {createRef, useEffect, useState} from "react";
 import {PlaceDetails} from "../PlaceDetails/PlaceDetails";
-export function List({places}) {
+export function List({places,childClick}) {
     const classes = useStyle();
     const [type,setType] = useState('restaurants');
     const [rating,setRating] = useState('');
 
+    const [elRefs, setElRefs] = useState([])
+    useEffect(() => {
+        const refs= Array(places?.length).fill().map((_,i)=>elRefs[i] || createRef());
+        setElRefs(refs);
 
+    }, [places]);
     return (
         <div className={classes.container}>
             <Typography variant='h4'> Restaurants, Hotels and Other Places Around you</Typography>
@@ -35,7 +40,7 @@ export function List({places}) {
             <Grid container spacing={3} className={classes.list}>
                 {places?.map((place,i)=>(
                     <Grid item key={i} xs={12} >
-                        <PlaceDetails place={place}/>
+                        <PlaceDetails place={place} selected={Number(childClick) === i} refProp={elRefs[i]}/>
                     </Grid>
                 ))}
             </Grid>
